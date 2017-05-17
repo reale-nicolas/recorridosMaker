@@ -92,7 +92,7 @@
                         <a href="#" id="liCargarArchivo">Cargar Archivo</a>
                         <ul>
                             <li class="subitem1"><a href="#"><input type="checkbox" id="checkMismoMapa">Mismo Mapa</input></a></li>
-                            <li class="subitem1"><a href="#"><input type="checkbox" id="checkEdicion">Modo Edicion</input></a></li>
+                            <li class="subitem1"><a href="#"><input type="checkbox" id="checkMostrarRecorrido">Mostrar Recorrido</input></a></li>
                             <li  id="btnExportar" class="subitem1"><a href="#">Exportar</a></li>
                             <li  id="btnCargar" class="subitem1"><a href="#">Cargar...</a></li>
                         </ul>
@@ -113,6 +113,7 @@
         <script type="text/javascript" src="http://localhost/mapas/maps.googleapis.js?key=AIzaSyDrseK5hT7_e3r_8_jf46QvFjxYW0hA4Sc&library=infowindow"></script>
         <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDrseK5hT7_e3r_8_jf46QvFjxYW0hA4Sc"></script>  -->
         <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="scriptMaps.js"></script>
         <script type="text/javascript">
                    
             $(document).ready(function() 
@@ -142,7 +143,10 @@
                     }
 //                    alert(nombreArchivo);
 //                    cargarMapa(nombreArchivo);
-                    var arrParadas = getRecorrido(nombreArchivo);
+                    var bMostrarRecorrido = false;
+                    if ($("#checkMostrarRecorrido").is(":checked"))
+                        bMostrarRecorrido = true;
+                    var arrParadas = openXMLBusTravel(nombreArchivo, bMostrarRecorrido);
                     cargarRecorridoMapa( arrParadas);
                     
                 });
